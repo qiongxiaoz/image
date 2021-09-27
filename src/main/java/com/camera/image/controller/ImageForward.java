@@ -27,18 +27,23 @@ public class ImageForward  {
         try{
                 //类型 默认image
                 String type = request.getParameter("type");
-                //用户唯一码
-                String userCode = request.getParameter("userCode");
-                //团队唯一码
-                String teamCode = request.getParameter("teamCode");
-                //照片数据 base64
-                String value = request.getParameter("image").replaceAll(" ","+").trim();
-                //自定义照片存储
-                ImageUtils.generateImageFromBase64(value,"/usr/local/image/test.jpg");
+                if(type.equals("text")){
+                    //文本测试，校验接口是否通畅 第一次绑定需要校验
+                    String value = request.getParameter("content");
+                }else if(type.equals("image")){
+                    //用户唯一码
+                    String userCode = request.getParameter("userCode");
+                    //团队唯一码
+                    String teamCode = request.getParameter("teamCode");
+                    //照片数据 base64
+                    String value = request.getParameter("image").replaceAll(" ","+").trim();
+                    //自定义照片存储
+                    ImageUtils.generateImageFromBase64(value,"/Users/wangsijun/Downloads/test.jpg");
+                }
 
                 response.setContentType("application/json;charset=UTF-8");
                 OutputStream os = response.getOutputStream();
-                os.write("{\"status\":0}".getBytes());
+                os.write("{\"errcode\":0,\"errmsg\":\"ok\"}".getBytes());
                 os.flush();
                 os.close();
        } catch (Exception e) {
