@@ -38,7 +38,7 @@ public class ImageForward  {
                     //照片数据 base64
                     String value = request.getParameter("image").replaceAll(" ","+").trim();
                     //自定义照片存储
-                    ImageUtils.generateImageFromBase64(value,"/Users/wangsijun/Downloads/test.jpg");
+                    ImageUtils.generateImageFromBase64(value,"/Users/local/Downloads/test.jpg");
                 }
 
                 response.setContentType("application/json;charset=UTF-8");
